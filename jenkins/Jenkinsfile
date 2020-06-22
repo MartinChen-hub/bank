@@ -14,13 +14,9 @@ podTemplate(label: label,serviceAccount:'jenkins-k8s-sa',containers: [
     def gitCommit = myRepo.GIT_COMMIT
     def gitBranch = myRepo.GIT_BRANCH
 
-
     def imageTag = "v2.0"
     def dockerRegistryUrl = "docker.io"
-    def imageEndpoint1 = "markchen20190628/bank"
-    def image1 = "${imageEndpoint1}"
-
-
+    def image = "markchen20190628/bank"
 
     stage('单元测试') {
       echo "测试阶段"
@@ -41,8 +37,8 @@ podTemplate(label: label,serviceAccount:'jenkins-k8s-sa',containers: [
               echo "3. 构建 Docker 镜像阶段"
               sh """
                 docker login ${dockerRegistryUrl} -u ${DOCKER_HUB_USER} -p ${DOCKER_HUB_PASSWORD}
-                docker build -t ${image1}:${imageTag} .
-                docker push ${image1}:${imageTag}
+                docker build -t ${image}:${imageTag} .
+                docker push ${image}:${imageTag}
                 """
             }
           }
