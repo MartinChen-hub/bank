@@ -24,7 +24,7 @@ public class BankController {
         map.put("030", "汇丰银行");
         map.put("010", "恒生银行");
         map.put("011", "招商银行");
-        map.put("013", "农业银行2");
+        map.put("013", "农业银行3");
         map.put("000", "Default");
         return map;
     }
