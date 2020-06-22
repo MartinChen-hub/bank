@@ -1,7 +1,13 @@
 package com.vb.bank.controller;
 
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
-public class BankInfoController {
+public class BankController {
 
     @GetMapping(path="/bank/all")
     public Map<String, String> getBankInfoMap(){
