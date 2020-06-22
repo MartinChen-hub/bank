@@ -1,0 +1,46 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: bank
+  namespace: ostone-platform
+spec:
+  template:
+    metadata:
+      labels:
+        app: bank
+    spec:
+      terminationGracePeriodSeconds: 10
+      serviceAccountName: edda-k8s-sa
+      containers:
+        - name: bank
+          image: markchen20190628/bank:v2.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+              name: web
+              protocol: TCP
+            - containerPort: 50001
+              name: agent
+              protocol: TCP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bank
+  namespace: ostone-platform
+  labels:
+    app: bank
+spec:
+  selector:
+    app: bank
+  type: NodePort
+  ports:
+    - name: web
+      port: 8080
+      targetPort: web
+      nodePort: 31087
+    - name: agent
+      port: 50001
+      targetPort: agent
