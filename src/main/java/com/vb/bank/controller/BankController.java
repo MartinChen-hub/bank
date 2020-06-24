@@ -20,12 +20,6 @@ public class BankController {
         Map<String, String> map = new HashMap<>();
         map.put("012", "China Bank Hong Kong");
         map.put("390", "Welab Bank");
-        map.put("023", "渣打银行");
-        map.put("030", "汇丰银行");
-        map.put("010", "恒生银行");
-        map.put("011", "招商银行2");
-        map.put("013", "农业银行5");
-        map.put("000", "Default");
         return map;
     }
 }

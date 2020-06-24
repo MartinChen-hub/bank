@@ -20,10 +20,12 @@ podTemplate(label: label,serviceAccount:'jenkins-k8s-sa',containers: [
 
     stage('单元测试') {
       echo "测试阶段"
+      container('maven') {
+        sh 'mvn test'
+      }
     }
     stage('代码编译打包') {
       container('maven') {
-        sh ''
         sh 'mvn -B -DskipTests clean package'
       }
     }
