@@ -20,9 +20,9 @@ podTemplate(label: label,serviceAccount:'jenkins-k8s-sa',containers: [
 
     stage('单元测试') {
       echo "测试阶段"
-      container('maven') {
-        sh 'mvn -Dtest=ConsoleParserTest test'
-      }
+//       container('maven') {
+//         sh 'mvn -Dtest=ConsoleParserTest test'
+//       }
     }
     stage('代码编译打包') {
       container('maven') {
