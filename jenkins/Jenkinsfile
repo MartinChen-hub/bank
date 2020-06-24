@@ -21,12 +21,12 @@ podTemplate(label: label,serviceAccount:'jenkins-k8s-sa',containers: [
     stage('单元测试') {
       echo "测试阶段"
       container('maven') {
-        sh 'mvn test'
+        sh 'mvn -Dtest=ConsoleParserTest test'
       }
     }
     stage('代码编译打包') {
       container('maven') {
-        sh 'mvn -B -DskipTests clean package'
+        sh 'mvn -B clean package'
       }
     }
     stage('构建 Docker 镜像') {
