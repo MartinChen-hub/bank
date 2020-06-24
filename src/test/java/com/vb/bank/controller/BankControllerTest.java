@@ -32,6 +32,6 @@ public class BankControllerTest {
         ).headers(headers);
         mockMvc.perform(requestBuilder)
                 .andExpect(status().isOk())
-                .andExpect(content().json("{\"012\":\"China Bank Hong Kong\",\"390\":\"Welab Bank\"}")).andReturn();
+                .andExpect(content().json("{\"012\":\"China Bank Hong Kong\",\"391\":\"Welab Bank\"}")).andReturn();
     }
 }
